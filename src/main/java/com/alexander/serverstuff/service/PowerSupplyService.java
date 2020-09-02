@@ -18,11 +18,7 @@ public class PowerSupplyService {
 
     @Transactional
     public PowerSupplier updatePowerSupply(PowerSupplier powerSupplier){
-        if(powerSupplyRepository.existsById(powerSupplier.getId())){
-            powerSupplyRepository.deleteById(powerSupplier.getId());
-        }
-        powerSupplyRepository.save(powerSupplier);
-        return powerSupplyRepository.findById(powerSupplier.getId()).get();
+        return powerSupplyRepository.save(powerSupplier);
     }
 
     @Transactional

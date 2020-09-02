@@ -12,9 +12,9 @@ public class PowerSupplyController {
     @Autowired
     private PowerSupplyService powerSupplyService;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public PowerSupplier getPowerSupplier(@RequestBody Integer id){
+    public PowerSupplier getPowerSupplier(@PathVariable Integer id){
         return powerSupplyService.getPowerSupply(id);
     }
 
@@ -24,9 +24,9 @@ public class PowerSupplyController {
         return powerSupplyService.updatePowerSupply(powerSupplier);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Boolean deletePowerSupplier(@RequestBody Integer id){
+    public Boolean deletePowerSupplier(@PathVariable Integer id){
         return powerSupplyService.deletePowerSupply(id);
     }
 }

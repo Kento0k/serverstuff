@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Service
 public class DiskService {
     @Autowired
@@ -18,11 +19,7 @@ public class DiskService {
 
     @Transactional
     public Disk updateDisk(Disk disk){
-        if(diskRepository.existsById(disk.getId())){
-            diskRepository.deleteById(disk.getId());
-        }
-        diskRepository.save(disk);
-        return diskRepository.findById(disk.getId()).get();
+        return diskRepository.save(disk);
     }
 
     @Transactional

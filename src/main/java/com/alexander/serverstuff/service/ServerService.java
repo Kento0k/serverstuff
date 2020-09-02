@@ -18,11 +18,7 @@ public class ServerService {
 
     @Transactional
     public Server updateServer(Server server){
-        if(serverRepository.existsById(server.getId())){
-            serverRepository.deleteById(server.getId());
-        }
-        serverRepository.save(server);
-        return serverRepository.findById(server.getId()).get();
+        return serverRepository.save(server);
     }
 
     @Transactional

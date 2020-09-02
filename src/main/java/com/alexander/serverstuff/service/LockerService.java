@@ -18,11 +18,7 @@ public class LockerService {
 
     @Transactional
     public Locker updateLocker(Locker locker){
-        if(lockerRepository.existsById(locker.getId())){
-            lockerRepository.deleteById(locker.getId());
-        }
-        lockerRepository.save(locker);
-        return lockerRepository.findById(locker.getId()).get();
+        return lockerRepository.save(locker);
     }
 
     @Transactional

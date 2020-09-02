@@ -4,10 +4,7 @@ import com.alexander.serverstuff.entity.Server;
 import com.alexander.serverstuff.service.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(path = "/server")
@@ -15,9 +12,9 @@ public class ServerController {
     @Autowired
     private ServerService serverService;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Server getServer(@RequestBody Integer id){
+    public Server getServer(@PathVariable Integer id){
         return serverService.getServer(id);
     }
 
@@ -27,9 +24,9 @@ public class ServerController {
         return serverService.updateServer(server);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Boolean deleteServer(@RequestBody Integer id){
+    public Boolean deleteServer(@PathVariable Integer id){
         return serverService.deleteServer(id);
     }
 }
